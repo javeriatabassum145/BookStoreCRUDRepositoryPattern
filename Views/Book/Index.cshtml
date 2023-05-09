@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CRUDRepositoryPattern.Models.Book>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h3 class="text-center text-uppercase">List of Books</h3>
+<p>
+    <a class="btn btn-primary" asp-action="Create" asp-controller="Book">Create New</a>
+
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(m => m.Title)</th>
+            <th>@Html.DisplayNameFor(m => m.Authors)</th>
+            <th>@Html.DisplayNameFor(m => m.publishYear)</th>
+            <th>@Html.DisplayNameFor(m => m.BasePrice)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Authors</td>
+                <td>@book.publishYear</td>
+                <td>@book.BasePrice</td>
+                <td>
+                    <a class="btn btn-success" asp-action="Details" asp-controller="Book" asp-route-id="@book.Id">Details</a>
+                    &nbsp;&nbsp;
+                    <a class="btn btn-secondary" asp-action="Edit" asp-controller="Book" asp-route-id="@book.Id">Edit</a>
+                    &nbsp;&nbsp;
+                    <a class="btn btn-danger" asp-action="Delete" asp-controller="Book" asp-route-id="@book.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>  
